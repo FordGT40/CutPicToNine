@@ -2,5 +2,6 @@
     <string name="app_name">九格切图</string>
     <string name="main_title">九格切图</string>
     <string name="main_choose_pic">选择图片</string>
+    <string name="get_permission">请授权读取存储空间</string>
     <string name="net_wrok_unconnetion_text">网络连接失败</string>
 </resources>

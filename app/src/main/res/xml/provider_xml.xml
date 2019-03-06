@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path path="HrbDownload/" name="HrbDownload" />
+    <external-path name="my_images" path="Android/data/com.wisdom.cutpictonine/files/Pictures" />
+    <external-path  name="apkpath" path="Android/data/com.wisdom.cutpictonine/files/Download"/>
+</paths>

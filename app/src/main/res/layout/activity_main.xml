@@ -41,6 +41,7 @@
             >
 
         <ImageButton
+                android:id="@+id/btn_choose_pic"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +60,5 @@
                 android:drawableTop="@mipmap/album"
                 android:drawablePadding="@dimen/distance_10dp"
                 />
-
-
     </FrameLayout>
 </LinearLayout>
