@@ -13,6 +13,7 @@ import com.wisdom.base.BaseActivity
 import com.wisdom.cutpictonine.MainActivity.Companion.REQUEST_CODE_CUT
 import com.wisdom.cutpictonine.MainActivity.Companion.tempFile
 import com.wisdom.cutpictonine.slicer.*
+import org.jetbrains.anko.toast
 import java.io.FileInputStream
 import java.util.*
 
@@ -75,6 +76,7 @@ class ChoosePicActivity : BaseActivity() {
     }
 
     override fun initViews() {
+        setTitle(R.string.main_title)
         initImageViews()
         bitmapSlicer = ninePicBitmapSlicer
         currentImageViewList = ninePicImageViews
@@ -165,7 +167,7 @@ class ChoosePicActivity : BaseActivity() {
                         progressView!!.visibility = View.VISIBLE
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        Toast.makeText(this, "无法读取图片", Toast.LENGTH_SHORT).show()
+                        toast(R.string.get_pic_error)
                         progressView!!.visibility = View.GONE
                         return
                     }
