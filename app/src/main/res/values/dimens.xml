@@ -1,0 +1,170 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--标题栏高度-->
+    <dimen name="title_height_fifty">50dp</dimen>
+    <dimen name="tab_height_fifty">50dp</dimen>
+    <dimen name="tab_div_height">0.5dp</dimen>
+    <!--标题栏字体-->
+    <dimen name="title_textsize">18sp</dimen>
+    <dimen name="tab_indicator_textsize">16sp</dimen>
+    <dimen name="item_text_fifteen">15sp</dimen>
+
+    <dimen name="item_divider_height">0.3dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <dimen name="textsize_16sp">16dp</dimen>
+    <dimen name="textsize_14sp">14dp</dimen>
+    <dimen name="twenty_textsize">20dp</dimen>
+    <dimen name="font_size_20dp">20dp</dimen>
+    <!-- tab字体 -->
+    <dimen name="tab_text_size">10sp</dimen>
+    <!-- 标题栏的高度 -->
+    <dimen name="titlebar_height">48dp</dimen>
+    <!-- 标题栏字体大小 -->
+    <dimen name="title_bar_font_size">18sp</dimen>
+    <!-- 字体大小 15sp-->
+    <dimen name="font_size_15sp">15sp</dimen>
+    <!-- 高度 34dp-->
+    <dimen name="height_34dp">34dp</dimen>
+    <!-- 距离5dp -->
+    <dimen name="distance_5dp">5dp</dimen>
+    <!-- 距离10dp -->
+    <dimen name="distance_8dp">8dp</dimen>
+    <!-- 距离10dp -->
+    <dimen name="distance_10dp">10dp</dimen>
+    <!-- 距离12dp -->
+    <dimen name="distance_12dp">12dp</dimen>
+    <!-- 距离13dp -->
+    <dimen name="distance_13dp">13dp</dimen>
+    <!-- 字体大小14sp -->
+    <dimen name="font_size_14sp">14sp</dimen>
+    <!-- 字体大小16sp -->
+    <dimen name="font_size_16sp">16sp</dimen>
+    <!-- 高度135dp -->
+    <dimen name="height_135dp">135dp</dimen>
+    <!-- 字体大小12sp -->
+    <dimen name="font_size_12sp">12sp</dimen>
+    <!-- 距离6dp -->
+    <dimen name="distance_6dp">6dp</dimen>
+    <!-- 字体大小10sp -->
+    <dimen name="font_size_10sp">10sp</dimen>
+    <!-- 高度2dp -->
+    <dimen name="height_2dp">2dp</dimen>
+    <!-- 高度48dp -->
+    <dimen name="height_48dp">48dp</dimen>
+    <!-- 内边距8dp -->
+    <dimen name="padding_8dp">8dp</dimen>
+    <!-- 内边距3dp -->
+    <dimen name="padding_3dp">3dp</dimen>
+    <!-- 高度17dp -->
+    <dimen name="height_17dp">17dp</dimen>
+    <!-- 字体大小 -->
+    <dimen name="font_size_11sp">11sp</dimen>
+    <!-- 高度56dp -->
+    <dimen name="height_56dp">56dp</dimen>
+    <!-- 宽度40dp -->
+    <dimen name="width_40dp">40dp</dimen>
+    <!-- 宽度260dp -->
+    <dimen name="width_260dp">260dp</dimen>
+    <!-- 距离30dp -->
+    <!-- 距离50dp -->
+    <dimen name="distance_50dp">50dp</dimen>
+    <dimen name="distance_60dp">60dp</dimen>
+    <dimen name="distance_70dp">70dp</dimen>
+    <!-- 高度26dp -->
+    <dimen name="height_26dp">26dp</dimen>
+    <!-- 高度155dp -->
+    <dimen name="height_155dp">155dp</dimen>
+    <!-- 高度210dp -->
+    <dimen name="height_210dp">210dp</dimen>
+    <!-- 距离20dp -->
+    <dimen name="distance_20dp">20dp</dimen>
+    <!-- 距离16dp -->
+    <dimen name="distance_16dp">16dp</dimen>
+    <!-- 高度40dp -->
+    <dimen name="height_40dp">40dp</dimen>
+    <!-- 高度63dp -->
+    <dimen name="height_63dp">63dp</dimen>
+    <!-- 字体大小8sp -->
+    <dimen name="font_size_8sp">8sp</dimen>
+    <!-- 字体大小17sp -->
+    <dimen name="font_size_17sp">17sp</dimen>
+    <!-- 高度28dp -->
+    <dimen name="height_28dp">28dp</dimen>
+    <!-- 字体大小13sp -->
+    <dimen name="font_size_13sp">13sp</dimen>
+    <!-- 距离25dp -->
+    <dimen name="distance_25dp">25dp</dimen>
+    <!-- 字体大小18sp -->
+    <dimen name="font_size_18sp">18sp</dimen>
+    <!-- 内边距12dp -->
+    <dimen name="padding_12dp">12dp</dimen>
+    <!-- 高度100dp -->
+    <dimen name="height_100dp">100dp</dimen>
+    <!-- 字体大小20sp -->
+    <dimen name="font_size_20sp">20sp</dimen>
+    <!-- 宽度250dp -->
+    <dimen name="width_250dp">250dp</dimen>
+    <!-- 宽度50dp -->
+    <dimen name="width_50dp">50dp</dimen>
+    <!-- 宽度180dp -->
+    <dimen name="width_180dp">180dp</dimen>
+    <!-- 宽度80dp -->
+    <dimen name="width_80dp">80dp</dimen>
+    <!-- 宽度100dp -->
+    <dimen name="width_100dp">100dp</dimen>
+    <!-- 宽度150dp -->
+    <dimen name="width_150dp">150dp</dimen>
+    <!-- 高度165dp -->
+    <dimen name="height_165dp">165dp</dimen>
+    <!-- 距离35dp -->
+    <dimen name="distance_35dp">35dp</dimen>
+    <dimen name="distance_30dp">30dp</dimen>
+    <dimen name="distance_40dp">40dp</dimen>
+    <!-- 高度360dp -->
+    <dimen name="height_360dp">360dp</dimen>
+    <!-- 高度60dp -->
+    <dimen name="height_60dp">60dp</dimen>
+    <!-- 距离45dp -->
+    <dimen name="distance_45dp">45dp</dimen>
+    <!-- 距离75dp -->
+    <dimen name="distance_75dp">75dp</dimen>
+    <dimen name="distance_80dp">80dp</dimen>
+    <!-- 高度265dp -->
+    <dimen name="height_365dp">365dp</dimen>
+    <!-- 宽度2dp -->
+    <dimen name="width_2dp">2dp</dimen>
+    <!-- 宽度120dp -->
+    <dimen name="width_120dp">120dp</dimen>
+    <!-- 距离28dp -->
+    <dimen name="distance_28dp">28dp</dimen>
+    <!-- 距离65dp -->
+    <dimen name="distance_65dp">65dp</dimen>
+    <!-- 距离18dp -->
+    <dimen name="distance_18dp">18dp</dimen>
+    <!-- 高度30dp -->
+    <dimen name="height_30dp">30dp</dimen>
+    <!-- 距离15dp -->
+    <dimen name="distance_15dp">15dp</dimen>
+    <dimen name="view_small_padding">1dp</dimen>
+    <dimen name="view_padding">6dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="fab_size_normal">35dp</dimen>
+    <dimen name="fab_size_mini">25dp</dimen>
+
+    <dimen name="fab_icon_size">35dp</dimen>
+
+    <dimen name="fab_plus_icon_size">14dp</dimen>
+    <dimen name="fab_plus_icon_stroke">2dp</dimen>
+
+    <dimen name="fab_shadow_offset">2dp</dimen>
+    <dimen name="fab_shadow_radius">4dp</dimen>
+
+    <dimen name="fab_stroke_width">1dp</dimen>
+
+    <dimen name="fab_actions_spacing">10dp</dimen>
+    <dimen name="fab_labels_margin">8dp</dimen>
+</resources>
