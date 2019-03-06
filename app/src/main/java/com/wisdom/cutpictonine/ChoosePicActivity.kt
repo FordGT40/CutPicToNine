@@ -42,7 +42,7 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
     private val threePicBitmapSlicer = ThreePicBitmapSlicer()
     private val fourPicBitmapSlicer = FourPicBitmapSlicer()
     private val sixPicBitmapSlicer = SixPicBitmapSlicer()
-    private var bitmapSlicer = ninePicBitmapSlicer
+    private var bitmapSlicer: BitmapSlicer = ninePicBitmapSlicer
     private var progressView: View? = null
     private var lastDesBitmaps: List<Bitmap>? = null
     private val bitmapSliceListener = object : BitmapSlicer.BitmapSliceListener {
@@ -83,40 +83,8 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         setTitle(R.string.main_title)
         initImageViews()
         initListener()
-        bitmapSlicer = ninePicBitmapSlicer
-        currentImageViewList = ninePicImageViews
         progressView = findViewById(R.id.layout_progress)
-        val uri = intent.data
-        var h = 0
-        var w = 0
-        try {
-            val bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(uri))
-            h = bitmap.height
-            w = bitmap.width
-            bitmap.recycle()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Toast.makeText(this, "无法读取图片", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val intent = Intent("com.android.camera.action.CROP")
-        intent.setDataAndType(uri, "image/*")
-        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
-        intent.putExtra("crop", "true")
-        //该参数可以不设定用来规定裁剪区的宽高比
-        intent.putExtra("aspectX", bitmapSlicer.aspectX)
-        intent.putExtra("aspectY", bitmapSlicer.aspectY)
-        //该参数设定为你的imageView的大小
-        intent.putExtra("outputX", bitmapSlicer.calculateOutputX(w, h))
-        intent.putExtra("outputY", bitmapSlicer.calculateOutputY(w, h))
-        //是否返回bitmap对象
-        intent.putExtra("return-data", false)
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile))
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString())
-        intent.putExtra("noFaceDetection", true)
-        startActivityForResult(intent, REQUEST_CODE_CUT)
-
+       ll_nine.performClick()
     }
 
     /**
@@ -130,7 +98,6 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         ll_six.setOnClickListener(this)
         ll_four.setOnClickListener(this)
         ll_three.setOnClickListener(this)
-        ll_nine.performClick()
     }
 
     private fun initImageViews() {
@@ -208,24 +175,36 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                     listOf(ll_nine, ll_six, ll_four, ll_three)
                     , listOf(tv_nine, tv_six, tv_four, tv_three)
                 )
+                bitmapSlicer = ninePicBitmapSlicer
+                currentImageViewList = ninePicImageViews
+                cutPic()
             }
             R.id.ll_six -> {
                 setUIState(
                     listOf(ll_six, ll_four, ll_three, ll_nine)
                     , listOf(tv_six, tv_four, tv_three, tv_nine)
                 )
+                bitmapSlicer = sixPicBitmapSlicer
+                currentImageViewList = sixPickImageViews
+                cutPic()
             }
             R.id.ll_four -> {
                 setUIState(
                     listOf(ll_four, ll_three, ll_nine, ll_six)
                     , listOf(tv_four, tv_three, tv_nine, tv_six)
                 )
+                bitmapSlicer = fourPicBitmapSlicer
+                currentImageViewList = fourPickImageViews
+                cutPic()
             }
             R.id.ll_three -> {
                 setUIState(
                     listOf(ll_three, ll_nine, ll_six, ll_four)
                     , listOf(tv_three, tv_nine, tv_six, tv_four)
                 )
+                bitmapSlicer = threePicBitmapSlicer
+                currentImageViewList = threePickImageViews
+                cutPic()
             }
         }
     }
@@ -249,5 +228,44 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                 textViewList[i].setTextColor(resources.getColor(R.color.color_2e2e2e))
             }
         }
+    }
+
+    /**
+     *  @describe 切图的方法
+     *  @return
+     *  @author HanXueFeng
+     *  @time 2019/3/6  15:06
+     */
+    private fun cutPic() {
+        val uri = intent.data
+        var h = 0
+        var w = 0
+        try {
+            val bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(uri))
+            h = bitmap.height
+            w = bitmap.width
+            bitmap.recycle()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "无法读取图片", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val intent = Intent("com.android.camera.action.CROP")
+        intent.setDataAndType(uri, "image/*")
+        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
+        intent.putExtra("crop", "true")
+        //该参数可以不设定用来规定裁剪区的宽高比
+        intent.putExtra("aspectX", bitmapSlicer.aspectX)
+        intent.putExtra("aspectY", bitmapSlicer.aspectY)
+        //该参数设定为你的imageView的大小
+        intent.putExtra("outputX", bitmapSlicer.calculateOutputX(w, h))
+        intent.putExtra("outputY", bitmapSlicer.calculateOutputY(w, h))
+        //是否返回bitmap对象
+        intent.putExtra("return-data", false)
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile))
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString())
+        intent.putExtra("noFaceDetection", true)
+        startActivityForResult(intent, REQUEST_CODE_CUT)
     }
 }
