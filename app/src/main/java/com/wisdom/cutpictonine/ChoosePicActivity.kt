@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import android.text.Html
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -13,11 +15,20 @@ import android.widget.TextView
 import android.widget.Toast
 import com.wisdom.base.BaseActivity
 import com.wisdom.cutpictonine.MainActivity.Companion.REQUEST_CODE_CUT
+import com.wisdom.cutpictonine.MainActivity.Companion.baseDir
 import com.wisdom.cutpictonine.MainActivity.Companion.tempFile
 import com.wisdom.cutpictonine.slicer.*
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Action
+import io.reactivex.functions.Consumer
+import io.reactivex.functions.Function
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_choose_pic.*
 import org.jetbrains.anko.toast
+import java.io.File
 import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.util.*
 
 /**
@@ -65,13 +76,13 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
             }
             lastDesBitmaps = desBitmaps
             progressView!!.visibility = View.GONE
-//            resultView.setVisibility(View.GONE)
+
         }
 
         override fun onSliceFailed() {
             Toast.makeText(this@ChoosePicActivity, "切片失败", Toast.LENGTH_SHORT).show()
             progressView!!.visibility = View.GONE
-//            resultView.setVisibility(View.GONE)
+
         }
     }
 
@@ -84,7 +95,7 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         initImageViews()
         initListener()
         progressView = findViewById(R.id.layout_progress)
-       ll_nine.performClick()
+        ll_nine.performClick()
     }
 
     /**
@@ -98,6 +109,7 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         ll_six.setOnClickListener(this)
         ll_four.setOnClickListener(this)
         ll_three.setOnClickListener(this)
+        btn_save.setOnClickListener(this)
     }
 
     private fun initImageViews() {
@@ -206,8 +218,13 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                 currentImageViewList = threePickImageViews
                 cutPic()
             }
+            R.id.btn_save -> {
+                //保存图片的按钮
+                savePic()
+            }
         }
     }
+
 
     /**
      *  @describe 设置界面下方四个大按钮的状态
@@ -268,4 +285,53 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         intent.putExtra("noFaceDetection", true)
         startActivityForResult(intent, REQUEST_CODE_CUT)
     }
+
+    /**
+     *  @describe 保存图片
+     *  @return
+     *  @author HanXueFeng
+     *  @time 2019/3/6  16:05
+     */
+    private fun savePic() {
+        if (lastDesBitmaps == null) {
+            toast("请先选择图片")
+            return
+        }
+        progressView!!.visibility = View.VISIBLE
+        val parent = File(baseDir)
+        val prefix = System.currentTimeMillis().toString() + ""
+        val slices = ArrayList<File>()
+        if (!parent.exists()) {
+            parent.mkdirs()
+        }
+        Observable.fromArray(*lastDesBitmaps!!.toTypedArray())
+            .map { bitmap ->
+                val index = lastDesBitmaps!!.indexOf(bitmap)
+                val file = File(parent, prefix + "_" + (index + 1) + ".jpg")
+                val os = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
+                os.close()
+                file
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ file ->
+                val uri = Uri.fromFile(file)
+                Log.d("xsm-save-files", uri.toString())
+                slices.add(file)
+                sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
+            }, { throwable ->
+                throwable.printStackTrace()
+                Toast.makeText(this@ChoosePicActivity, "导出失败", Toast.LENGTH_SHORT).show()
+                progressView!!.setVisibility(View.GONE)
+//                resultView.setVisibility(View.GONE)
+            }, {
+                progressView!!.setVisibility(View.GONE)
+                toast("保存成功！")
+//                resultView.setVisibility(View.VISIBLE)
+//                resultTv.setText(Html.fromHtml("<font color=\"#868686\">切片已保存在</font><font color=\"#33a24e\">" + parent.absolutePath + "</font><font color=\"#868686\">，点击分享到朋友圈</font>"))
+//                resultTv.setTag(slices)
+            })
+    }
+
 }
