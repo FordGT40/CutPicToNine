@@ -8,11 +8,14 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import com.wisdom.base.BaseActivity
 import com.wisdom.cutpictonine.MainActivity.Companion.REQUEST_CODE_CUT
 import com.wisdom.cutpictonine.MainActivity.Companion.tempFile
 import com.wisdom.cutpictonine.slicer.*
+import kotlinx.android.synthetic.main.activity_choose_pic.*
 import org.jetbrains.anko.toast
 import java.io.FileInputStream
 import java.util.*
@@ -25,7 +28,8 @@ import java.util.*
  * @time 2019/3/6 9:44
  * @change
  */
-class ChoosePicActivity : BaseActivity() {
+class ChoosePicActivity : BaseActivity(), View.OnClickListener {
+
 
     private val ninePicImageViews = ArrayList<ImageView>()
     private val towPickImageViews = ArrayList<ImageView>()
@@ -78,6 +82,7 @@ class ChoosePicActivity : BaseActivity() {
     override fun initViews() {
         setTitle(R.string.main_title)
         initImageViews()
+        initListener()
         bitmapSlicer = ninePicBitmapSlicer
         currentImageViewList = ninePicImageViews
         progressView = findViewById(R.id.layout_progress)
@@ -112,6 +117,20 @@ class ChoosePicActivity : BaseActivity() {
         intent.putExtra("noFaceDetection", true)
         startActivityForResult(intent, REQUEST_CODE_CUT)
 
+    }
+
+    /**
+     *  @describe 初始化类内监听方法
+     *  @return
+     *  @author HanXueFeng
+     *  @time 2019/3/6  14:36
+     */
+    private fun initListener() {
+        ll_nine.setOnClickListener(this)
+        ll_six.setOnClickListener(this)
+        ll_four.setOnClickListener(this)
+        ll_three.setOnClickListener(this)
+        ll_nine.performClick()
     }
 
     private fun initImageViews() {
@@ -171,8 +190,63 @@ class ChoosePicActivity : BaseActivity() {
                         progressView!!.visibility = View.GONE
                         return
                     }
-
                 }
+            }
+        }
+    }
+
+    /**
+     *  @describe 类内点击事件
+     *  @return
+     *  @author HanXueFeng
+     *  @time 2019/3/6  14:38
+     */
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.ll_nine -> {
+                setUIState(
+                    listOf(ll_nine, ll_six, ll_four, ll_three)
+                    , listOf(tv_nine, tv_six, tv_four, tv_three)
+                )
+            }
+            R.id.ll_six -> {
+                setUIState(
+                    listOf(ll_six, ll_four, ll_three, ll_nine)
+                    , listOf(tv_six, tv_four, tv_three, tv_nine)
+                )
+            }
+            R.id.ll_four -> {
+                setUIState(
+                    listOf(ll_four, ll_three, ll_nine, ll_six)
+                    , listOf(tv_four, tv_three, tv_nine, tv_six)
+                )
+            }
+            R.id.ll_three -> {
+                setUIState(
+                    listOf(ll_three, ll_nine, ll_six, ll_four)
+                    , listOf(tv_three, tv_nine, tv_six, tv_four)
+                )
+            }
+        }
+    }
+
+    /**
+     *  @describe 设置界面下方四个大按钮的状态
+     *              第一个传入的参数为选中状态的
+     *  @return
+     *  @author HanXueFeng
+     *  @time 2019/3/6  14:41
+     */
+    private fun setUIState(linearLayoutList: List<LinearLayout>, textViewList: List<TextView>) {
+        for (i in linearLayoutList.indices) {
+            if (i == 0) {
+                linearLayoutList[i].setBackgroundColor(resources.getColor(R.color.color_2e2e2e))
+                textViewList[i].setBackgroundColor(resources.getColor(R.color.color_2e2e2e))
+                textViewList[i].setTextColor(resources.getColor(R.color.white))
+            } else {
+                linearLayoutList[i].setBackgroundColor(resources.getColor(R.color.color_f0f0f0))
+                textViewList[i].setBackgroundColor(resources.getColor(R.color.color_f0f0f0))
+                textViewList[i].setTextColor(resources.getColor(R.color.color_2e2e2e))
             }
         }
     }

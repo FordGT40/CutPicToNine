@@ -130,6 +130,7 @@
 
                 </RelativeLayout>
             </FrameLayout>
+
             <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -157,7 +158,132 @@
                 </RadioGroup>
             </LinearLayout>
 
+            <LinearLayout
+                    android:layout_marginTop="@dimen/distance_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                   android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    >
 
+                <LinearLayout
+                        android:padding="@dimen/padding_3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                    <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="55dp"
+                            android:layout_height="75dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/shape_circle_coner"
+                            android:id="@+id/ll_nine">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_2e2e2e"
+                                android:text="9张"
+                                android:drawablePadding="8dp"
+                                android:drawableBottom="@mipmap/piece_nine"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_nine"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:padding="@dimen/padding_3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                    <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="55dp"
+                            android:layout_height="75dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/shape_circle_coner"
+                            android:id="@+id/ll_six">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_2e2e2e"
+                                android:text="6张"
+                                android:drawablePadding="8dp"
+                                android:drawableBottom="@mipmap/piece_six"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_six"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:padding="@dimen/padding_3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                    <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="55dp"
+                            android:layout_height="75dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/shape_circle_coner"
+                            android:id="@+id/ll_four">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_2e2e2e"
+                                android:text="4张"
+                                android:drawablePadding="8dp"
+                                android:drawableBottom="@mipmap/piece_four"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_four"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:padding="@dimen/padding_3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        >
+
+                    <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="55dp"
+                            android:layout_height="75dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/shape_circle_coner"
+                            android:id="@+id/ll_three">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_2e2e2e"
+                                android:text="3张"
+                                android:drawablePadding="8dp"
+                                android:drawableBottom="@mipmap/piece_three"
+                                android:textSize="17sp"
+                                android:id="@+id/tv_three"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
 
         </LinearLayout>
