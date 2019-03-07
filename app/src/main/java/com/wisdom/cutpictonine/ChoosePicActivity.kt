@@ -1,7 +1,6 @@
 package com.wisdom.cutpictonine
 
 import android.app.Activity
-import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -18,11 +17,9 @@ import com.wisdom.cutpictonine.MainActivity.Companion.REQUEST_CODE_CUT
 import com.wisdom.cutpictonine.MainActivity.Companion.baseDir
 import com.wisdom.cutpictonine.MainActivity.Companion.tempFile
 import com.wisdom.cutpictonine.slicer.*
+import com.wisdom.utils.ShareHelper
 import io.reactivex.Observable
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_choose_pic.*
 import org.jetbrains.anko.toast
@@ -224,8 +221,7 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                 savePic()
             }
             R.id.btn_share -> {
-                //TODO 分享图片
-//                shareSlices(btn_share)
+                ShareHelper.shareSlicesWeChat(this@ChoosePicActivity, progressView, btn_share)
             }
         }
     }
