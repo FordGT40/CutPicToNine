@@ -16,7 +16,25 @@
     <!--android:layout_height="match_parent"-->
     <!--android:orientation="vertical"-->
     <!--&gt;-->
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll_success"
+        android:visibility="gone"
+       android:gravity="center"
+        >
+    <TextView
+            android:textSize="@dimen/font_size_18sp"
+            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:drawableTop="@mipmap/success"
+            android:layout_marginTop="@dimen/distance_15dp"
+            android:text="@string/pic_save_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
+</LinearLayout>
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -160,6 +178,7 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/ll_choose"
             android:layout_marginTop="@dimen/distance_30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -286,13 +305,14 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:gravity="center"
             android:layout_height="match_parent">
 
         <Button
+                android:layout_gravity="center"
                 android:text="@string/get_pic_save"
                 android:textColor="@color/white"
                 android:id="@+id/btn_save"
@@ -301,10 +321,19 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/save_bg"
                 />
+        <Button
+                android:layout_gravity="center"
+                android:text="@string/share"
+                android:textColor="@color/white"
+                android:id="@+id/btn_share"
+                android:visibility="gone"
+                android:textSize="@dimen/font_size_18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/wechat_bg"
+                />
 
-    </LinearLayout>
-
-
+    </FrameLayout>
     <!--</LinearLayout>-->
     <!--</ScrollView>-->
 </LinearLayout>

@@ -1,12 +1,12 @@
 package com.wisdom.cutpictonine
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
-import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -19,9 +19,9 @@ import com.wisdom.cutpictonine.MainActivity.Companion.baseDir
 import com.wisdom.cutpictonine.MainActivity.Companion.tempFile
 import com.wisdom.cutpictonine.slicer.*
 import io.reactivex.Observable
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Action
-import io.reactivex.functions.Consumer
+import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_choose_pic.*
@@ -110,6 +110,7 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
         ll_four.setOnClickListener(this)
         ll_three.setOnClickListener(this)
         btn_save.setOnClickListener(this)
+        btn_share.setOnClickListener(this)
     }
 
     private fun initImageViews() {
@@ -222,6 +223,10 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                 //保存图片的按钮
                 savePic()
             }
+            R.id.btn_share -> {
+                //TODO 分享图片
+//                shareSlices(btn_share)
+            }
         }
     }
 
@@ -324,13 +329,22 @@ class ChoosePicActivity : BaseActivity(), View.OnClickListener {
                 throwable.printStackTrace()
                 Toast.makeText(this@ChoosePicActivity, "导出失败", Toast.LENGTH_SHORT).show()
                 progressView!!.setVisibility(View.GONE)
-//                resultView.setVisibility(View.GONE)
+                ll_choose.visibility = View.VISIBLE
+                ll_success.visibility = View.GONE
+                btn_share.visibility = View.GONE
+                btn_save.visibility = View.VISIBLE
+//  resultView.setVisibility(View.GONE)
             }, {
                 progressView!!.setVisibility(View.GONE)
-                toast("保存成功！")
-//                resultView.setVisibility(View.VISIBLE)
+                toast(R.string.pic_save_success)
+                ll_choose.visibility = View.GONE
+                ll_success.visibility = View.VISIBLE
+                btn_share.visibility = View.VISIBLE
+                btn_save.visibility = View.GONE
+//   resultView.setVisibility(View.VISIBLE)
 //                resultTv.setText(Html.fromHtml("<font color=\"#868686\">切片已保存在</font><font color=\"#33a24e\">" + parent.absolutePath + "</font><font color=\"#868686\">，点击分享到朋友圈</font>"))
 //                resultTv.setTag(slices)
+                btn_share.setTag(slices)
             })
     }
 
