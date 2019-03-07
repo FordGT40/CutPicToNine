@@ -31,7 +31,7 @@ public class ShareHelper {
 
     /**
      * 分享到微信
-     *
+     *暂时不支持分享朋友圈
      * @param context
      * @param progressView 进度条布局
      * @param v            被点击的按钮布局文件view
