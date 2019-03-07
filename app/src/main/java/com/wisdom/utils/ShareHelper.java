@@ -31,9 +31,10 @@ public class ShareHelper {
 
     /**
      * 分享到微信
+     *
      * @param context
      * @param progressView 进度条布局
-     * @param v  被点击的按钮布局文件view
+     * @param v            被点击的按钮布局文件view
      */
     public static void shareSlicesWeChat(final Context context, final View progressView, View v) {
         if (v.getTag() != null) {
@@ -107,16 +108,23 @@ public class ShareHelper {
                             Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            intent.setType("image/jpeg");
-//                            ComponentName comp = new ComponentName("com.tencent.mm",
-//                                    "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+//                            分享到朋友圈（微信7.0以上，官方暂时不支持多图分享了）
+//                            https://blog.csdn.net/okg0111/article/details/86498186
                             ComponentName comp = new ComponentName("com.tencent.mm",
-                                    "com.tencent.mm.ui.tools.ShareImgUI");
+                                    "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+//                            分享给朋友
+//                            ComponentName comp = new ComponentName("com.tencent.mm",
+//                                    "com.tencent.mm.ui.tools.ShareImgUI");
 
                             intent.setComponent(comp);
                             intent.setType("image/*");
                             intent.putExtra("Kdescription", "");
                             intent.putExtra(Intent.EXTRA_STREAM, sliceUris);
+                            for (int i = 0; i < sliceUris.size(); i++) {
+                                Log.i("slice", "sliceUri: " + sliceUris.get(i));
+                            }
+
+
                             context.startActivity(intent);
                         }
                     });
